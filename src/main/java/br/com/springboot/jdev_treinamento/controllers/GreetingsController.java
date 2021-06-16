@@ -113,4 +113,14 @@ public class GreetingsController {
     	
     }
     
+    @GetMapping(value = "buscarPorNome")/*mapeia a url*/
+    @ResponseBody /*Descrição da resposta*/
+    public ResponseEntity<List<Usuario>> buscarPorNome(@RequestParam (name = "name")String name){/*Buscar os dados para consulta*/
+    	
+    	List<Usuario> usuario = usuarioRepository.buscarPorNome(name.trim());
+    	
+    	return new ResponseEntity<List<Usuario>>(usuario, HttpStatus.OK);
+    	
+    }
+    
 }
